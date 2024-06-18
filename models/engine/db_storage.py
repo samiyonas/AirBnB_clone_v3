@@ -75,7 +75,6 @@ class DBStorage:
         """call remove() method on the private session attribute"""
         self.__session.remove()
 
-
     def get(self, cls, id):
         """ return object based on the class and it's ID"""
         fet = self.all(cls)
@@ -84,7 +83,6 @@ class DBStorage:
         for key in fet:
             if key == comp:
                 return fet[key]
-
 
     def count(self, cls=None):
         """ count the number of objects in a storage"""
@@ -98,6 +96,3 @@ class DBStorage:
         for key in fet:
             counter += 1
         return counter
-
-
-
