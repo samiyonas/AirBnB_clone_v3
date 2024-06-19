@@ -17,9 +17,11 @@ def closedb(obj):
 
 
 @app.errorhandler(404)
-def error(obj):
+def not_found(error):
     """ 404 error handling """
-    return jsonify({"error": "Not found"})
+    response = jsonify({"error": "Not found"})
+    response.status_code = 404
+    return response
 
 
 if __name__ == "__main__":
