@@ -16,6 +16,7 @@ def status():
     """ status route """
     return jsonify({"status": "OK"})
 
+
 @app_views.route("/stats")
 def stats():
     statistics = {
@@ -23,6 +24,7 @@ def stats():
         "cities": storage.count(City),
         "places": storage.count(Place),
         "reviews": storage.count(Review),
+        "states": storage.count(State),
         "users": storage.count(User)
     }
     return jsonify(statistics)
