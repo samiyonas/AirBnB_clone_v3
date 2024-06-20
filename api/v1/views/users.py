@@ -80,7 +80,7 @@ def update_user(user_id):
         abort(404)
     for key, value in body.items():
         if key not in ["id", "email", "created_at", "updated_at"]:
-            obj[key] = value
+            setattr(obj, key, value)
     storage.save()
     obj = jsonify(obj.to_dict())
     obj.status_code = 200
