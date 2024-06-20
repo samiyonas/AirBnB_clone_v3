@@ -67,7 +67,7 @@ def new_obj(state_id):
     storage.new(new_city)
     storage.save()
     new_city = jsonify(new_city.to_dict())
-    new_city.status_code = 200
+    new_city.status_code = 201
     return new_city
 
 
