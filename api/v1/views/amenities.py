@@ -47,8 +47,6 @@ def delete_amenity(amenity_id):
     "/amenities", methods=["POST"], strict_slashes=False)
 def new_amenity():
     """ add a new object """
-    if request.is_json:
-        abort(400)
     body = request.get_json()
     if not body:
         abort(400, "Not JSON")
