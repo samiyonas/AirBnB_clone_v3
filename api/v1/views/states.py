@@ -44,6 +44,8 @@ def delete_states(state_id):
 @app_views.route("/states", methods=["POST"], strict_slashes=False)
 def new_state():
     """ adding a new object to our database """
+    if not request.is_json:
+        abort(400)
     post = request.get_json()
     if not post:
         abort(400, "Not a JSON")
@@ -60,6 +62,8 @@ def new_state():
 @app_views.route("/states/<state_id>", methods=["PUT"])
 def update_state(state_id):
     """ update a state object """
+    if not request.is_json:
+        abort(400)
     put = request.get_json()
     if not put:
         abort(400, "Not a JSON")
