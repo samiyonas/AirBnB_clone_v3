@@ -5,7 +5,7 @@ from models import storage
 from flask import request, jsonify, abort
 
 
-@app_views(
+@app_views.route(
     "/amenities", methods=["GET"], strict_slashes=False)
 def get_amenities():
     """ retrieve list of all Amenity objects """
@@ -17,7 +17,7 @@ def get_amenities():
     return obj
 
 
-@app_views(
+@app_views.route(
     "/amenities/<amenity_id>", methods=["GET"], strict_slashes=False)
 def get_amenity_id(amenity_id):
     """ retrieve object by ID """
@@ -28,9 +28,9 @@ def get_amenity_id(amenity_id):
     return obj
 
 
-@app_views(
+@app_views.route(
     "/amenities/<amenity_id>", methods=["DELETE"], strict_slashes=False)
-def delete_obj(amenity_id):
+def delete_amenity(amenity_id):
     """ delete a specific amenity object """
     obj = storage.get(Amenity, amenity_id)
     if not obj:
@@ -42,9 +42,9 @@ def delete_obj(amenity_id):
     return obj
 
 
-@app_views(
+@app_views.route(
     "/amenities", methods=["POST"], strict_slashes=False)
-def new_obj():
+def new_amenity():
     """ add a new object """
     if request.is_json:
         abort(400)
@@ -62,8 +62,8 @@ def new_obj():
 
 
 @app_views.route(
-    "/amenities/<amenity_id>", methods=["GET"], strict_slashes=False)
-def update_obj(amenity_id):
+    "/amenities/<amenity_id>", methods=["PUT"], strict_slashes=False)
+def update_amenity(amenity_id):
     """ update amenity object """
     if not request.is_json:
         abort(400)
