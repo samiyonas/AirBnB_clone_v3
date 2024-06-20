@@ -58,7 +58,7 @@ def new_user():
         abort(400, "Missing password")
     new_obj = User()
     for key, value in body.items():
-        new_obj[key] = value
+        setattr(new_obj, key, value)
     storage.new(new_obj)
     storage.save()
     new_obj = jsonify(new_obj.to_dict())
