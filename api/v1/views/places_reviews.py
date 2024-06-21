@@ -64,12 +64,12 @@ def new_review(place_id):
         abort(404)
     if "text" not in body:
         abort(400, "Missing text")
-    new_review = Review()
+    new_reviews = Review()
     for key, value in body.items():
-        setattr(new_review, key, value)
-    storage.new(new_review)
+        setattr(new_reviews, key, value)
+    storage.new(new_reviews)
     storage.save()
-    return jsonify(new_review.to_dict()), 201
+    return jsonify(new_reviews.to_dict()), 201
 
 
 @app_views.route(
