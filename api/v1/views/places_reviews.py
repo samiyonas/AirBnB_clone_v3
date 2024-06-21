@@ -67,8 +67,6 @@ def new_review(place_id):
     new_reviews = Review()
     for key, value in body.items():
         setattr(new_reviews, key, value)
-    storage.new(new_reviews)
-    storage.save()
     return jsonify(new_reviews.to_dict()), 201
 
 
