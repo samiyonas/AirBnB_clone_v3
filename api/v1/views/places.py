@@ -18,7 +18,7 @@ def get_place(city_id):
         abort(404)
     places = []
     for value in place_obj.values():
-        if value.city_id == city_id:
+        if value.city_id == city_obj.id:
             places.append(value.to_dict())
     places = jsonify(places)
     return places
